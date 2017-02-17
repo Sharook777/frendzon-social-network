@@ -1,0 +1,50 @@
+{% extends 'list.html' %}
+
+{% block compose %}
+<div class="panel panel-default panel-feed">
+	<div class="panel-body">
+		<div class="" style="dispaly:block;">
+			<h4> Compose New Post</h4>
+			<form role="compose" action='{% url "create"%}' method="POST" enctype="multipart/form-data">
+				{% csrf_token %}
+				<div class="form-group">
+					<textarea class="form-control" rows="3" name="post" autocomplete="off" required="True"></textarea>
+				</div>
+				<div class="form-group">
+					<input class="form-control"  type="file" name="image"></input>
+				</div>
+				<div class="form-group">
+					<button class="btn btn-primary"><span class="fa fa-send"></span>&nbsp;Post</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+
+
+{% block menu %}
+<!-- <div class="container">
+<div class="col-sm-6">
+	<div class="panel-group"><a class="link" href="/dp/">
+		<div class="panel panel-danger">
+		<div class="panel-heading">
+			Change Profile Picture</div></div></a>
+		<a class="link" href="/status/"><div class="panel panel-info">
+			<div class="panel-heading">Change Status</div></div></a>
+		<a class="link" href="/password/"><div class="panel panel-success">
+			<div class="panel-heading">Change Password</div></div></a></div>
+</ul></div></div> -->
+
+
+<ul class="nav nav-tabs">
+	<li class="{{ about }}"><a href="{% url 'about' profile.slug %}">About</a></li>
+	<li class='{{ pro }}'><a href="{% url 'profile' profile.slug %}">Posts</a></li>
+	<li class='{{ gallery }}'><a href="{% url 'gallery' profile.slug %}">Gallery</a></li>
+
+
+{% endblock %}
+
+
+
